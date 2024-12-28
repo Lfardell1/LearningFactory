@@ -46,6 +46,46 @@ The repository is organized into the following folders:
 6. **Advanced Programming Topics:**
    - Secure programming practices.
    - Web scraping and data analysis.
+## Vulnerability Simulations
+
+### Host Vulnerable Apps
+Include intentionally vulnerable applications like **OWASP Juice Shop** or **DVWA** directly in this repository. These applications are great for practicing security testing techniques and learning how to identify and mitigate vulnerabilities.
+
+#### Example Activity
+- **Objective:** Exploit and then patch an SQL injection vulnerability.
+- **Steps:**
+  1. Set up the vulnerable app by following the provided instructions.
+  2. Identify an SQL injection vulnerability in the app.
+  3. Exploit the vulnerability to understand the impact.
+  4. Apply a fix (e.g., parameterized queries) to patch the issue.
+  5. Verify the fix to ensure the vulnerability is resolved.
+
+---
+
+### Custom Vulnerable Applications
+Develop simple, custom web applications with deliberate vulnerabilities for users to discover, exploit, and secure. These custom apps provide hands-on experience in a controlled environment.
+
+#### Example: Python Flask Application with Broken Authentication
+- **Objective:** Identify and fix a broken authentication flaw.
+- **Details:**
+  1. A Flask web app is provided with weak authentication logic.
+  2. Users are tasked with:
+     - Analyzing the code to identify the flaw.
+     - Exploiting the vulnerability to bypass authentication.
+     - Implementing a secure authentication mechanism.
+  3. After applying the fix, users test the app to confirm the issue is resolved.
+
+#### Getting Started
+1. Clone the repository.
+2. Navigate to the vulnerable app folder (e.g., `vulnerable-apps/flask-broken-auth`).
+3. Follow the setup instructions in the `README.md` file inside the app directory.
+4. Begin exploring and patching the vulnerabilities.
+
+---
+
+### Notes
+- These activities are for **educational purposes only**. Always use them in isolated or controlled environments to prevent unintended consequences.
+- Refer to the documentation provided in each app's folder for detailed setup and usage instructions.
 
 
 ### **Potential Projects**
