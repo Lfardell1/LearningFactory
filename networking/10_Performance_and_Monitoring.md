@@ -4,11 +4,6 @@
 
 ## 10. Performance & Monitoring
 
-### File: `10_Performance_and_Monitoring.md`
-
-```markdown
-# 10. Performance & Monitoring
-
 ## Overview
 
 Monitoring network performance is crucial for ensuring optimal operation, identifying bottlenecks, and maintaining service quality. Key metrics include bandwidth, latency, and jitter, while various tools aid in measuring and analyzing these parameters.
