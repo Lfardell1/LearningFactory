@@ -4,11 +4,6 @@
 
 ## 5. Domain Name System (DNS)
 
-### File: `05_Domain_Name_System.md`
-
-```markdown
-# 5. Domain Name System (DNS)
-
 ## Overview
 
 The Domain Name System (DNS) is the Internet's phonebook, translating human-readable domain names (e.g., www.example.com) into machine-readable IP addresses (e.g., 93.184.216.34).
