@@ -4,11 +4,6 @@
 
 ## 6. Application Layer Protocols
 
-### File: `06_Application_Layer_Protocols.md`
-
-```markdown
-# 6. Application Layer Protocols
-
 ## Overview
 
 The Application Layer (Layer 7) of the OSI model facilitates communication between software applications and the network. It encompasses various protocols that define how applications interact over the network.
