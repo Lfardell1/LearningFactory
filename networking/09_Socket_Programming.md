@@ -4,11 +4,6 @@
 
 ## 9. Socket Programming
 
-### File: `09_Socket_Programming.md`
-
-```markdown
-# 9. Socket Programming
-
 ## Overview
 
 Socket programming enables the creation of networked applications by providing a way for processes to communicate over a network. It involves using sockets as endpoints for sending and receiving data.
