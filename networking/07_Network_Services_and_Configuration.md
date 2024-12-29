@@ -4,10 +4,6 @@
 
 ## 7. Network Services & Configuration
 
-### File: `07_Network_Services_and_Configuration.md`
-
-```markdown
-# 7. Network Services & Configuration
 
 ## Overview
 
