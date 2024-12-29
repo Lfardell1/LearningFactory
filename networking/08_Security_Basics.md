@@ -4,10 +4,6 @@
 
 ## 8. Security Basics
 
-### File: `08_Security_Basics.md`
-
-```markdown
-# 8. Security Basics
 
 ## Overview
 
