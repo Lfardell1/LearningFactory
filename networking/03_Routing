@@ -1,0 +1,139 @@
+## 3. Routing & Switching
+
+### Overview
+
+Routing and switching are critical functions in network infrastructure, responsible for directing data traffic efficiently and effectively.
+
+### Switching
+
+**Switches** operate at the **Data Link Layer (Layer 2)** of the OSI model, facilitating communication within the same network.
+
+#### Functions of a Switch
+
+1. **MAC Address Learning:**
+   - Switches learn the MAC addresses of connected devices by inspecting incoming frames.
+   
+2. **Frame Forwarding:**
+   - Frames are forwarded only to the specific port where the destination device is connected, reducing unnecessary traffic.
+
+3. **Loop Prevention:**
+   - Protocols like **Spanning Tree Protocol (STP)** prevent network loops that can cause broadcast storms.
+
+#### Types of Switches
+
+- **Unmanaged Switches:**
+  - Plug-and-play devices with no configuration.
+  - Suitable for small networks.
+  
+- **Managed Switches:**
+  - Offer advanced features like VLANs, QoS, and SNMP monitoring.
+  - Suitable for larger, more complex networks.
+
+#### VLANs (Virtual LANs)
+
+- **Purpose:** Segment a physical network into multiple logical networks.
+- **Benefits:** Enhances security, reduces broadcast domains, improves traffic management.
+- **Configuration:** Assign ports to specific VLANs; inter-VLAN routing requires a router or Layer 3 switch.
+
+### Routing
+
+**Routers** operate at the **Network Layer (Layer 3)** of the OSI model, directing data packets between different networks.
+
+#### Functions of a Router
+
+1. **Path Selection:**
+   - Determines the best path for data packets based on routing algorithms and protocols.
+
+2. **Packet Forwarding:**
+   - Forwards packets from the source to the destination network.
+
+3. **Inter-Network Communication:**
+   - Connects different network segments, enabling communication between them.
+
+4. **Network Address Translation (NAT):**
+   - Translates private IP addresses to a public IP address for Internet communication.
+
+#### Types of Routers
+
+- **Core Routers:**
+  - High-capacity routers used within the backbone of the Internet.
+  
+- **Edge Routers:**
+  - Connect internal networks to external networks (e.g., Internet).
+  
+- **Virtual Routers:**
+  - Software-based routers running on virtual machines or cloud environments.
+
+### Routing Tables
+
+A **routing table** stores routes to particular network destinations, facilitating efficient packet forwarding.
+
+#### Components of a Routing Table
+
+1. **Destination Network:** The target network or IP address range.
+2. **Subnet Mask:** Defines the network portion of the destination.
+3. **Next Hop:** The next router to forward the packet to.
+4. **Interface:** The router interface to use for forwarding.
+5. **Metric:** A value that represents the cost of using the route (used for path selection).
+
+#### Static vs. Dynamic Routing
+
+- **Static Routing:**
+  - Manually configured routes.
+  - Suitable for small or simple networks.
+  - **Pros:** Simple, low overhead.
+  - **Cons:** Not scalable, lacks adaptability.
+
+- **Dynamic Routing:**
+  - Routes are automatically learned and updated using routing protocols.
+  - Suitable for larger, complex networks.
+  - **Pros:** Scalable, adaptable to network changes.
+  - **Cons:** More complex, higher overhead.
+
+### Common Routing Protocols
+
+1. **RIP (Routing Information Protocol):**
+   - **Type:** Distance-vector.
+   - **Metric:** Hop count.
+   - **Limitations:** Maximum of 15 hops; slow convergence.
+
+2. **OSPF (Open Shortest Path First):**
+   - **Type:** Link-state.
+   - **Metric:** Cost based on bandwidth.
+   - **Advantages:** Fast convergence, scalable.
+
+3. **EIGRP (Enhanced Interior Gateway Routing Protocol):**
+   - **Type:** Advanced distance-vector.
+   - **Metric:** Bandwidth, delay, load, reliability.
+   - **Advantages:** Fast convergence, supports VLSM/CIDR.
+
+4. **BGP (Border Gateway Protocol):**
+   - **Type:** Path-vector.
+   - **Metric:** AS path, policy-based attributes.
+   - **Usage:** Core routing protocol of the Internet.
+
+### Practical Example: Configuring OSPF
+
+**Scenario:** Configure OSPF on two routers to enable communication between them.
+
+**Router A Configuration:**
+
+```bash
+RouterA# configure terminal
+RouterA(config)# router ospf 1
+RouterA(config-router)# network 192.168.1.0 0.0.0.255 area 0
+RouterA(config-router)# exit
+RouterA(config)# exit
+RouterA# write memory
+
+RouterB# configure terminal
+RouterB(config)# router ospf 1
+RouterB(config-router)# network 192.168.1.0 0.0.0.255 area 0
+RouterB(config-router)# exit
+RouterB(config)# exit
+RouterB# write memory
+
+``` 
+
+
+
