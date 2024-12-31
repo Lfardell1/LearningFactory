@@ -1,49 +1,33 @@
-import socket
-"""Web Server: 
-Need Something to send back to client (object)
-How to send that thing back to the client (Transit).
-Errors
-"""
-""" 
+from flask import Flask, render_template
+from flask_socketio import SocketIO, send, emit, join_room, leave_room
 
-    socket()
-    .bind()
-    .listen()
-    .accept() 
-    .connect()
-    .connect_ex()
-    .send()
-    .recv()
-    .close()
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'secret!'
+socketio = SocketIO(app)
 
-"""
+users = {}
 
+@app.route('/')
+def index():
+    return render_template('chat.html')
 
-# There is a socket that is utilised on each end - client and server
-# Socket runs through the port of the connection
-# All comms go through this
+@socketio.on('message')
+def handleMessage(data):
+    username = users.get(data['sid'], 'Anonymous')
+    msg = {'text': data['msg'], 'username': username, 'timestamp': data['timestamp']}
+    send(msg, broadcast=True)
 
+@socketio.on('join')
+def handleJoin(data):
+    users[data['username']] = data['username']
+    join_room(data['room'])
+    emit('user_joined', {'username': data['username'], 'timestamp': data['timestamp']}, room=data['room'])
 
+@socketio.on('leave')
+def handleLeave(data):
+    username = users.pop(data['sid'], 'Anonymous')
+    leave_room(data['room'])
+    emit('user_left', {'username': username, 'timestamp': data['timestamp']}, room=data['room'])
 
-#  class socket.socket(family=AF_INET, type=SOCK_STREAM, proto=0, fileno=None)
-# AF_INET can be AF_INET (the default), AF_INET6, AF_UNIX, AF_CAN, AF_PACKET, or AF_RDS
-# socket type should be SOCK_STREAM (the default), 
-# UDP - User Datagram Protocol - VIDEO 
-# TCP - Transmission Control Protocol - WEBSITES
-# SOCK_DGRAM = UDP type connection, SOCK_RAW = TCP type connection
-sock = socket.socket() 
-
-
-# Function that runs concurrently with the program until a connection is found
-sock.listen()
-
-# (conn, address)
-connection, address = sock.accept()    
-
-print(f"Connection Recieved: {connection} and the address is {address}")
-
-    
-    
-
-    
-        
+if __name__ == '__main__':
+    socketio.run(app, debug=True)
